@@ -51,7 +51,55 @@ const featuredQuestions = [
     isAnswered: false,
     isVerified: false,
   },
-]
+  {
+    id: 4,
+    title: "What is the ruling on cryptocurrency trading in Islam?",
+    excerpt:
+      "I want to understand the Islamic perspective on trading cryptocurrencies like Bitcoin and Ethereum. Are they considered halal or haram?",
+    categories: ["Fiqh", "Business & Finance"],
+    author: "Ahmad Rahman",
+    authorAvatar: "/placeholder-user.jpg",
+    scholar: "Dr. Yusuf Al-Qaradawi",
+    scholarAvatar: "/placeholder-scholar.jpg",
+    answers: 3,
+    likes: 45,
+    timeAgo: "2 hours ago",
+    isAnswered: true,
+    isVerified: true,
+  },
+  {
+    id: 5,
+    title: "What is the ruling on cryptocurrency trading in Islam?",
+    excerpt:
+      "I want to understand the Islamic perspective on trading cryptocurrencies like Bitcoin and Ethereum. Are they considered halal or haram?",
+    categories: ["Fiqh", "Business & Finance"],
+    author: "Ahmad Rahman",
+    authorAvatar: "/placeholder-user.jpg",
+    scholar: "Dr. Yusuf Al-Qaradawi",
+    scholarAvatar: "/placeholder-scholar.jpg",
+    answers: 3,
+    likes: 45,
+    timeAgo: "2 hours ago",
+    isAnswered: true,
+    isVerified: true,
+  },
+  {
+    id: 6,
+    title: "What is the ruling on cryptocurrency trading in Islam?",
+    excerpt:
+      "I want to understand the Islamic perspective on trading cryptocurrencies like Bitcoin and Ethereum. Are they considered halal or haram?",
+    categories: ["Fiqh", "Business & Finance"],
+    author: "Ahmad Rahman",
+    authorAvatar: "/placeholder-user.jpg",
+    scholar: "Dr. Yusuf Al-Qaradawi",
+    scholarAvatar: "/placeholder-scholar.jpg",
+    answers: 3,
+    likes: 45,
+    timeAgo: "2 hours ago",
+    isAnswered: true,
+    isVerified: true,
+  },
+];
 
 export function FeaturedQuestions() {
   return (

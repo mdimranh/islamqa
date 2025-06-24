@@ -58,12 +58,12 @@ const topScholars = [
 export function TopScholars() {
   return (
     <section>
-      <div className="flex items-center justify-between mb-6">
+      {/* <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Top Scholars</h2>
         <Button variant="outline" className="text-emerald-600 border-emerald-200 hover:bg-emerald-50">
           View All
         </Button>
-      </div>
+      </div> */}
 
       <div className="space-y-4">
         {topScholars.map((scholar) => (

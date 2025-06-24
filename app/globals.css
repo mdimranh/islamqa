@@ -91,12 +91,20 @@
 
 /* Custom scrollbar */
 .scrollbar-hide {
-  -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Custom scrollbar */
+.scrollbar-show:hover {
+  scrollbar-width: 4px !important;
+}
+
+.scrollbar-show:hover::-webkit-scrollbar {
+  display: block !important;
 }
 
 /* Islamic geometric patterns */

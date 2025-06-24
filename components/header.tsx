@@ -49,7 +49,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
@@ -76,7 +76,7 @@ export function Header() {
           </nav>
 
           {/* Search Bar */}
-          <div className="hidden lg:flex items-center space-x-4 flex-1 max-w-md mx-8">
+          {/* <div className="hidden lg:flex items-center space-x-4 flex-1 max-w-md mx-8">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
@@ -87,7 +87,7 @@ export function Header() {
                 className="pl-10 bg-gray-50 border-gray-200 focus:bg-white"
               />
             </div>
-          </div>
+          </div> */}
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">

@@ -22,10 +22,10 @@ export function CategoryTabs() {
 
   return (
     <section className="w-full">
-      <div className="mb-6">
+      {/* <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">Browse by Category</h2>
         <p className="text-gray-600">Explore Islamic knowledge organized by topics</p>
-      </div>
+      </div> */}
 
       <ScrollArea className="w-full whitespace-nowrap">
         <div className="flex space-x-3 pb-4">
