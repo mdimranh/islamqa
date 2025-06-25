@@ -29,7 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${amiri.variable}`}>
-      <body className={inter.className}>{children}</body>
+      <body className="bg-slate-100">
+        <div>{children}</div>
+      </body>
     </html>
-  )
+  );
 }

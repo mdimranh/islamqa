@@ -44,9 +44,9 @@ const navigationItems = [
 
 export default function HomeSidebar() {
     return (
-      <div className="flex flex-col items-start justify-center w-full gap-2">
+      <div className="flex flex-col items-start justify-center w-full">
         {navigationItems.map((item, index) => (
-          <div key={index} className="flex items-center w-full space-x-3 hover:cursor-pointer hover:bg-slate-100 py-2 px-4 rounded-md">
+          <div key={index} className="font-bold flex items-center w-full space-x-3 hover:cursor-pointer hover:bg-slate-200 py-2.5 px-4 rounded-md">
             <item.icon className="w-8 h-8" />
             <span>{item.label}</span>
           </div>

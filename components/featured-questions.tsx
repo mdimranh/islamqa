@@ -1,20 +1,25 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { MessageSquare, ThumbsUp, Clock, CheckCircle } from "lucide-react"
+import { MessageSquare, ThumbsUp, Clock, CheckCircle, LucidePrinter } from "lucide-react"
+import { RiQuestionnaireFill } from "react-icons/ri"
+import { FaQuestion, FaRegBookmark } from "react-icons/fa"
+import { MdOutlineShare, MdQuestionAnswer } from "react-icons/md"
+import { PiSealQuestionFill } from "react-icons/pi"
+import { BiSolidMessageSquareCheck } from "react-icons/bi";
 
 const featuredQuestions = [
   {
     id: 1,
-    title: "What is the ruling on cryptocurrency trading in Islam?",
+    title: "রাসূল সাল্লাল্লাহু আলাইহি ওয়া সাল্লামের স্ত্রীগণ",
     excerpt:
-      "I want to understand the Islamic perspective on trading cryptocurrencies like Bitcoin and Ethereum. Are they considered halal or haram?",
-    categories: ["Fiqh", "Business & Finance"],
+      "নবী সাল্লাল্লাহু আলাইহি ওয়াসাল্লামের স্ত্রীদের সংখ্যা কত? তাদের নাম কী কী? স্পষ্ট দলীলসহ জবাব চাই, যেখানে হাদীসের নম্বর, বইয়ের নাম ও পৃষ্ঠার নম্বর উল্লেখ থাকবে; যেহেতু বিষয়টি নিয়ে অনেক বিভ্রান্তি আছে।",
+    categories: ["Fiqh", "Business", "Finance", "Technology"],
     author: "Ahmad Rahman",
-    authorAvatar: "/placeholder-user.jpg",
+    authorAvatar: "/scholar.jpg",
     scholar: "Dr. Yusuf Al-Qaradawi",
-    scholarAvatar: "/placeholder-scholar.jpg",
+    scholarAvatar: "/scholar.jpg",
     answers: 3,
     likes: 45,
     timeAgo: "2 hours ago",
@@ -104,95 +109,107 @@ const featuredQuestions = [
 export function FeaturedQuestions() {
   return (
     <section>
-      <div className="flex items-center justify-between mb-6">
+      {/* <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Featured Questions</h2>
-        <Button variant="outline" className="text-emerald-600 border-emerald-200 hover:bg-emerald-50">
+        <Button
+          variant="outline"
+          className="text-emerald-600 border-emerald-200 hover:bg-emerald-50"
+        >
           View All Questions
         </Button>
-      </div>
+      </div> */}
 
-      <div className="space-y-4">
+      <div className="space-y-4 mt-3">
         {featuredQuestions.map((question) => (
-          <Card key={question.id} className="hover:shadow-lg transition-shadow cursor-pointer">
-            <CardHeader className="pb-3">
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center space-x-2 mb-2">
-                    {question.categories.map((category) => (
-                      <Badge key={category} variant="secondary" className="text-xs">
-                        {category}
-                      </Badge>
-                    ))}
-                    {question.isAnswered && (
-                      <Badge className="bg-emerald-100 text-emerald-700 text-xs">
-                        <CheckCircle className="w-3 h-3 mr-1" />
-                        Answered
-                      </Badge>
-                    )}
+          <Card
+            key={question.id}
+            className="hover:shadow-lg transition-shadow relative overflow-hidden"
+          >
+            <div className="flex gap-2 justify-start">
+              <div className="w-full">
+                <FaQuestion
+                  className="absolute -top-3 -right-8 text-slate-300 opacity-25 z-0"
+                  size={150}
+                />
+                <CardHeader className="p-4">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-lg flex items-center gap-2 font-semibold text-gray-800 hover:text-emerald-700 cursor-pointer">
+                        <RiQuestionnaireFill
+                          size={25}
+                          className="text-emerald-800"
+                        />{" "}
+                        {question.title}
+                      </h3>
+                      <p className="text-gray-600 mt-2">{question.excerpt}</p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 hover:text-emerald-700 cursor-pointer">
-                    {question.title}
-                  </h3>
-                  <p className="text-gray-600 mt-2 line-clamp-2">{question.excerpt}</p>
-                </div>
+                </CardHeader>
+
+                <CardContent className="px-4 pt-0">
+                  <div className="flex items-end justify-between">
+                    <div className="cursor-pointer group">
+                      {question.isAnswered && question.scholar && (
+                        <div className="flex items-center gap-2">
+                          <Avatar className="w-8 h-8 rounded border">
+                            <AvatarImage
+                              className="object-cover"
+                              src={question.scholarAvatar || "/placeholder.svg"}
+                            />
+                            <AvatarFallback className="text-xs text-emerald-700 rounded">
+                              {question.scholar
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div className="flex flex-col">
+                            <span className="text-sm flex gap-2 items-center group-hover:text-emerald-700">
+                              {question.scholar}{" "}
+                              <BiSolidMessageSquareCheck className="w-4 h-4 text-emerald-600" />
+                            </span>
+                            <span className="text-xs text-gray-500">
+                              30m Ago • 450 Reads
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex flex-row-reverse items-center gap-2 text-sm text-slate-500">
+                      {question.categories.map(
+                        (category, index) =>
+                          index < 2 && (
+                            <Badge
+                              key={category}
+                              variant="outline"
+                              className="text-xs bg-slate-100 cursor-pointer hover:bg-slate-200"
+                            >
+                              {category}
+                            </Badge>
+                          )
+                      )}
+                      {question.categories.length > 2 && (
+                        <Badge
+                          variant="outline"
+                          className="text-xs bg-slate-100"
+                        >
+                          +{question.categories.length - 2}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                </CardContent>
               </div>
-            </CardHeader>
-
-            <CardContent className="pt-0">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2">
-                    <Avatar className="w-6 h-6">
-                      <AvatarImage src={question.authorAvatar || "/placeholder.svg"} />
-                      <AvatarFallback className="text-xs bg-gray-100">
-                        {question.author
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <span className="text-sm text-gray-600">{question.author}</span>
-                  </div>
-
-                  {question.isAnswered && question.scholar && (
-                    <>
-                      <span className="text-gray-300">•</span>
-                      <div className="flex items-center space-x-2">
-                        <Avatar className="w-6 h-6">
-                          <AvatarImage src={question.scholarAvatar || "/placeholder.svg"} />
-                          <AvatarFallback className="text-xs bg-emerald-100 text-emerald-700">
-                            {question.scholar
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")}
-                          </AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm text-emerald-700 font-medium">{question.scholar}</span>
-                        {question.isVerified && <CheckCircle className="w-4 h-4 text-emerald-600" />}
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                <div className="flex items-center space-x-4 text-sm text-gray-500">
-                  <div className="flex items-center space-x-1">
-                    <MessageSquare className="w-4 h-4" />
-                    <span>{question.answers}</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <ThumbsUp className="w-4 h-4" />
-                    <span>{question.likes}</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{question.timeAgo}</span>
-                  </div>
-                </div>
+              <div className="flex flex-col items-start gap-5 px-2 py-4 border-l z-10">
+                <FaRegBookmark className="w-5 h-5 text-slate-500 cursor-pointer" />
+                <MdOutlineShare className="w-5 h-5 text-slate-500 cursor-pointer" />
+                <LucidePrinter className="w-5 h-5 text-slate-500 cursor-pointer" />
               </div>
-            </CardContent>
+            </div>
           </Card>
         ))}
       </div>
     </section>
-  )
+  );
 }
