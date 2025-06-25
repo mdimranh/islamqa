@@ -113,7 +113,7 @@ export function FeaturedQuestions() {
 
       <div className="space-y-4">
         {featuredQuestions.map((question) => (
-          <Card key={question.id} className="hover:shadow-lg transition-shadow border-l-4 border-l-emerald-500">
+          <Card key={question.id} className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
                 <div className="flex-1">

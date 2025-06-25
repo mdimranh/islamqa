@@ -12,6 +12,9 @@ import { QiblaDirection } from "@/components/qibla-direction"
 import { IslamicCalendar } from "@/components/islamic-calendar"
 import { BismillahDivider } from "@/components/bismillah"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
+import HomeSidebar from "@/components/sidebar/home"
+import { Separator } from "@/components/ui/separator"
+import ScholarsSide from "@/components/scholars/side"
 
 export default function HomePage() {
   return (
@@ -19,39 +22,21 @@ export default function HomePage() {
       <Header />
 
       <div className="flex justify-between">
-        <div className="max-w-80 w-full max-h-[calc(100vh-100px)] py-4 flex flex-col gap-4 overflow-y-auto scrollbar-hide sticky top-[65px]">
-          <Suspense
+        <div className="max-w-80 w-full max-h-[calc(100vh-80px)] py-4 ml-4 flex flex-col gap-4 overflow-y-auto scrollbar-hide sticky top-[65px]">
+          {/* <Suspense
             fallback={
-              <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
+              <div className="animate-pulse bg-gray-200 h-64 rounded-lg"></div>
             }
           >
-            <PrayerTimes />
-          </Suspense>
-          <Suspense
-            fallback={
-              <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
-            }
-          >
-            <DailyVerse />
-          </Suspense>
-          <Suspense
-            fallback={
-              <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
-            }
-          >
-            <QiblaDirection />
-          </Suspense>
-          <Suspense
-            fallback={
-              <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
-            }
-          >
-            <IslamicCalendar />
-          </Suspense>
+            <TopScholars />
+          </Suspense> */}
+          <HomeSidebar />
+          <Separator />
+          <ScholarsSide />
         </div>
 
-        <div className="container max-w-4xl">
-          <HeroSection />
+        <div className="container max-w-4xl pt-6">
+          {/* <HeroSection /> */}
           <Suspense
             fallback={
               <div className="animate-pulse bg-gray-200 h-64 rounded-lg"></div>
@@ -62,13 +47,34 @@ export default function HomePage() {
           </Suspense>
         </div>
 
-        <div className="max-w-80 w-full max-h-[calc(100vh-100px)] py-4 flex flex-col gap-4 overflow-y-auto scrollbar-hide sticky top-[65px]">
+        <div className="max-w-80 w-full max-h-[calc(100vh-80px)] py-4 mr-4 flex flex-col gap-4 overflow-y-auto scrollbar-hide sticky top-[65px]">
           <Suspense
             fallback={
-              <div className="animate-pulse bg-gray-200 h-64 rounded-lg"></div>
+              <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
             }
           >
-            <TopScholars />
+            <PrayerTimes />
+          </Suspense>
+          {/* <Suspense
+            fallback={
+              <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
+            }
+          >
+            <DailyVerse />
+          </Suspense> */}
+          {/* <Suspense
+            fallback={
+              <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
+            }
+          >
+            <QiblaDirection />
+          </Suspense> */}
+          <Suspense
+            fallback={
+              <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
+            }
+          >
+            <IslamicCalendar />
           </Suspense>
         </div>
       </div>

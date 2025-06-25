@@ -14,6 +14,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Search, Bell, User, Settings, LogOut, BookOpen, MessageSquare, PenTool, Menu, Shield } from "lucide-react"
+import { GoHome } from "react-icons/go";
+import { MdOutlineQuestionAnswer } from "react-icons/md";
+import { PiBooks } from "react-icons/pi";
+import { RiArticleLine } from "react-icons/ri";
+import { IoBookOutline } from "react-icons/io5";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 export function Header() {
@@ -30,11 +35,12 @@ export function Header() {
   }
 
   const navigationItems = [
-    { href: "/questions", label: "Questions", icon: MessageSquare },
-    { href: "/articles", label: "Articles", icon: BookOpen },
-    { href: "/scholars", label: "Scholars", icon: User },
-    { href: "/ask", label: "Ask Question", icon: PenTool },
-  ]
+    { href: "/", label: "Home", icon: GoHome },
+    { href: "/questions", label: "Questions", icon: MdOutlineQuestionAnswer },
+    { href: "/articles", label: "Articles", icon: RiArticleLine },
+    { href: "/quran", label: "Quran", icon: IoBookOutline },
+    { href: "/hadith", label: "Hadith", icon: PiBooks },
+  ];
 
   const getDashboardLink = () => {
     switch (user.role) {
@@ -62,21 +68,21 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          {/* <nav className="hidden md:flex items-center space-x-14">
             {navigationItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="flex items-center space-x-1 text-gray-600 hover:text-emerald-700 transition-colors"
               >
-                <item.icon className="w-4 h-4" />
+                <item.icon className="w-6 h-6" />
                 <span>{item.label}</span>
               </Link>
             ))}
-          </nav>
+          </nav> */}
 
           {/* Search Bar */}
-          {/* <div className="hidden lg:flex items-center space-x-4 flex-1 max-w-md mx-8">
+          <div className="hidden lg:flex items-center space-x-4 flex-1 max-w-md mx-8">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
@@ -87,7 +93,7 @@ export function Header() {
                 className="pl-10 bg-gray-50 border-gray-200 focus:bg-white"
               />
             </div>
-          </div> */}
+          </div>
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">
