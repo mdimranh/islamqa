@@ -12,7 +12,8 @@ import { BiSolidMessageSquareCheck } from "react-icons/bi";
 const featuredQuestions = [
   {
     id: 1,
-    title: "রাসূল সাল্লাল্লাহু আলাইহি ওয়া সাল্লামের স্ত্রীগণ",
+    title:
+      "রাসূল সাল্লাল্লাহু আলাইহি ওয়া সাল্লামের স্ত্রীগণ",
     excerpt:
       "নবী সাল্লাল্লাহু আলাইহি ওয়াসাল্লামের স্ত্রীদের সংখ্যা কত? তাদের নাম কী কী? স্পষ্ট দলীলসহ জবাব চাই, যেখানে হাদীসের নম্বর, বইয়ের নাম ও পৃষ্ঠার নম্বর উল্লেখ থাকবে; যেহেতু বিষয়টি নিয়ে অনেক বিভ্রান্তি আছে।",
     categories: ["Fiqh", "Business", "Finance", "Technology"],
@@ -125,22 +126,26 @@ export function FeaturedQuestions() {
             key={question.id}
             className="hover:shadow-lg transition-shadow relative overflow-hidden"
           >
-            <div className="flex gap-2 justify-start">
+            <div className="flex flex-col justify-start">
               <div className="w-full">
                 <FaQuestion
                   className="absolute -top-3 -right-8 text-slate-300 opacity-25 z-0"
                   size={150}
                 />
-                <CardHeader className="p-4">
+                <CardHeader className="p-4 cursor-pointer">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h3 className="text-lg flex items-center gap-2 font-semibold text-gray-800 hover:text-emerald-700 cursor-pointer">
-                        <RiQuestionnaireFill
-                          size={25}
-                          className="text-emerald-800"
-                        />{" "}
-                        {question.title}
-                      </h3>
+                      <div className="flex justify-start items-start gap-2 w-full">
+                        <div>
+                          <RiQuestionnaireFill
+                            size={25}
+                            className="text-emerald-800 mt-0.5"
+                          />
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-800 hover:text-emerald-700">
+                          {question.title}
+                        </h3>
+                      </div>
                       <p className="text-gray-600 mt-2">{question.excerpt}</p>
                     </div>
                   </div>
@@ -201,7 +206,7 @@ export function FeaturedQuestions() {
                   </div>
                 </CardContent>
               </div>
-              <div className="flex flex-col items-start gap-5 px-2 py-4 border-l z-10">
+              <div className="flex justify-between gap-5 px-4 py-4 border-t z-10">
                 <FaRegBookmark className="w-5 h-5 text-slate-500 cursor-pointer" />
                 <MdOutlineShare className="w-5 h-5 text-slate-500 cursor-pointer" />
                 <LucidePrinter className="w-5 h-5 text-slate-500 cursor-pointer" />

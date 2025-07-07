@@ -18,6 +18,7 @@ import HomeSidebar from "@/components/sidebar/home"
 import { Separator } from "@/components/ui/separator"
 import ScholarsSide from "@/components/scholars/side"
 import ReelsSlider from "@/components/slider"
+import { ArticleCard } from "@/components/card/article"
 
 export default function HomePage() {
   const reelsData = [
@@ -133,8 +134,7 @@ export default function HomePage() {
   return (
     <div className="h-screen">
       <Header />
-
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-16">
         <div className="max-w-80 w-full max-h-[calc(100vh-80px)] py-4 ml-4 flex flex-col gap-4 overflow-y-auto scrollbar-hide sticky top-[65px]">
           {/* <Suspense
             fallback={
@@ -161,6 +161,27 @@ export default function HomePage() {
               onCreateStoryClick={handleCreateStoryClick}
             />
             {/* <CategoryTabs /> */}
+            <ArticleCard
+              article={{
+                id: 1,
+                title: "রাসূল সাল্লাল্লাহু আলাইহি ওয়া সাল্লামের স্ত্রীগণ",
+                excerpt:
+                  "নবী সাল্লাল্লাহু আলাইহি ওয়াসাল্লামের স্ত্রীদের সংখ্যা কত? তাদের নাম কী কী? স্পষ্ট দলীলসহ জবাব চাই, যেখানে হাদীসের নম্বর, বইয়ের নাম ও পৃষ্ঠার নম্বর উল্লেখ থাকবে; যেহেতু বিষয়টি নিয়ে অনেক বিভ্রান্তি আছে। নবী সাল্লাল্লাহু আলাইহি ওয়াসাল্লামের স্ত্রীদের সংখ্যা কত? তাদের নাম কী কী? স্পষ্ট দলীলসহ জবাব চাই, যেখানে হাদীসের নম্বর, বইয়ের নাম ও পৃষ্ঠার নম্বর উল্লেখ থাকবে; যেহেতু বিষয়টি নিয়ে অনেক বিভ্রান্তি আছে।",
+                categories: ["Fiqh", "Business", "Finance", "Technology"],
+                author: "Ahmad Rahman",
+                images: [
+                  "/placeholder.svg",
+                  "/placeholder.svg",
+                  "/placeholder.svg",
+                  "/placeholder.svg",
+                  "/placeholder.svg",
+                  "/placeholder.svg",
+                ],
+                authorAvatar: "/scholar.jpg",
+                scholar: "Dr. Yusuf Al-Qaradawi",
+                scholarAvatar: "/scholar.jpg",
+              }}
+            />
             <FeaturedQuestions />
           </Suspense>
         </div>
