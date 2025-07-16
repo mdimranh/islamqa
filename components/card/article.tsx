@@ -1,27 +1,16 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
-  CardFooter,
-  CardHeader,
+  CardHeader
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
-  MessageSquare,
-  ThumbsUp,
-  Clock,
-  CheckCircle,
-  LucidePrinter,
+  LucidePrinter
 } from "lucide-react";
-import { RiQuestionnaireFill } from "react-icons/ri";
-import { FaQuestion, FaRegBookmark } from "react-icons/fa";
-import { MdOutlineShare, MdQuestionAnswer } from "react-icons/md";
-import { PiSealQuestionFill } from "react-icons/pi";
 import { BiSolidMessageSquareCheck } from "react-icons/bi";
-import { Separator } from "@radix-ui/react-separator";
-import Image from "next/image";
-import { Gallery, PhotoGallery } from "./gallery";
+import { FaRegBookmark } from "react-icons/fa";
+import { MdOutlineShare } from "react-icons/md";
 import ExpandableText from "../expandableText";
 
 export function ArticleCard({article}: {article: any}) {
@@ -82,7 +71,7 @@ export function ArticleCard({article}: {article: any}) {
           <CardContent className="px-4 pt-0">
             {/* <Gallery images={article.images} /> */}
             <PhotoGallery images={article.images} />
-            <div className="mt-4">
+            <div className="mt-0">
               <ExpandableText
                 text={article.excerpt}
                 className="text-gray-700"

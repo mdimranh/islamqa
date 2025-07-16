@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ExpandableText({
   text,
@@ -18,14 +18,14 @@ export default function ExpandableText({
     const lineHeight = parseFloat(computedStyle.lineHeight);
     const targetHeight = lineHeight * 2.5;
 
-    // Create temporary element to measure text
+    // Create temporary element to measure text with pre-wrap formatting
     const tempDiv = document.createElement("div");
     tempDiv.style.cssText = computedStyle.cssText;
     tempDiv.style.position = "absolute";
     tempDiv.style.visibility = "hidden";
     tempDiv.style.height = "auto";
     tempDiv.style.width = measureElement.offsetWidth + "px";
-    tempDiv.style.whiteSpace = "normal";
+    tempDiv.style.whiteSpace = "pre-wrap"; // Preserve formatting like <pre>
     tempDiv.style.wordWrap = "break-word";
 
     document.body.appendChild(tempDiv);
@@ -58,10 +58,15 @@ export default function ExpandableText({
         }
       }
 
-      // Trim to word boundary if possible
+      // For pre-formatted text, we should be more careful about word boundaries
+      // Only trim to word boundary if it doesn't break formatting significantly
       const lastSpaceIndex = bestFit.lastIndexOf(" ");
-      if (lastSpaceIndex > bestFit.length * 0.8) {
-        bestFit = bestFit.substring(0, lastSpaceIndex);
+      const lastNewlineIndex = bestFit.lastIndexOf("\n");
+      
+      // Use the later position (space or newline) if it's reasonable
+      const cutoffPoint = Math.max(lastSpaceIndex, lastNewlineIndex);
+      if (cutoffPoint > bestFit.length * 0.8) {
+        bestFit = bestFit.substring(0, cutoffPoint);
       }
 
       setTruncatedText(bestFit);
@@ -81,7 +86,11 @@ export default function ExpandableText({
       <div
         ref={measureRef}
         className="leading-5"
-        style={{ lineHeight: "1.25" }}
+        style={{ 
+          lineHeight: "1.25",
+          whiteSpace: "pre-wrap", // Preserve whitespace and line breaks
+          wordWrap: "break-word"
+        }}
       >
         {!isExpanded && needsTruncation ? (
           <>
@@ -95,10 +104,22 @@ export default function ExpandableText({
             </button>
           </>
         ) : (
-          <>
+          <span style={{ whiteSpace: "pre-wrap" }}>
             {text}
-          </>
+          </span>
         )}
+        
+        {/* {isExpanded && needsTruncation && (
+          <>
+            <span className="text-gray-500"> </span>
+            <button
+              onClick={toggleExpanded}
+              className={`${buttonClassName} text-sm inline`}
+            >
+              See less
+            </button>
+          </>
+        )} */}
       </div>
     </div>
   );

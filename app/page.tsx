@@ -1,123 +1,114 @@
 "use client"
 
-import { Suspense } from "react"
-import { Header } from "@/components/header"
-import { HeroSection } from "@/components/hero-section"
-import { FeaturedQuestions } from "@/components/featured-questions"
-import { TrendingArticles } from "@/components/trending-articles"
-import { TopScholars } from "@/components/top-scholars"
-import { CategoryTabs } from "@/components/category-tabs"
-import { Footer } from "@/components/footer"
-import { PrayerTimes } from "@/components/prayer-times"
-import { DailyVerse } from "@/components/daily-verse"
-import { QiblaDirection } from "@/components/qibla-direction"
-import { IslamicCalendar } from "@/components/islamic-calendar"
-import { BismillahDivider } from "@/components/bismillah"
-import { ScrollArea } from "@radix-ui/react-scroll-area"
-import HomeSidebar from "@/components/sidebar/home"
-import { Separator } from "@/components/ui/separator"
-import ScholarsSide from "@/components/scholars/side"
-import ReelsSlider from "@/components/slider"
 import { ArticleCard } from "@/components/card/article"
+import { FeaturedQuestions } from "@/components/featured-questions"
+import { Header } from "@/components/header"
+import { IslamicCalendar } from "@/components/islamic-calendar"
+import { PrayerTimes } from "@/components/prayer-times"
+import ScholarsSide from "@/components/scholars/side"
+import HomeSidebar from "@/components/sidebar/home"
+import ReelsSlider from "@/components/slider"
+import { Separator } from "@/components/ui/separator"
+import { Suspense } from "react"
 
 export default function HomePage() {
   const reelsData = [
     {
       id: "1",
       title: "Create story",
-      image: "scholar.jpg",
+      image: "/tree/1.jpg",
       isCreateStory: true,
     },
     {
       id: "2",
       title: "RealityCheck BD",
-      image: "/api/placeholder/200/300",
+      image: "/tree/2.jpg",
       author: "RealityCheck BD",
     },
     {
       id: "3",
       title: "মেসবাম র্যাসেল উদ্দিন",
-      image: "/api/placeholder/200/300",
+      image: "/tree/3.jpg",
       author: "Rassel Uddin",
     },
     {
       id: "4",
       title: "Naim Islam",
-      image: "/api/placeholder/200/300",
+      image: "/tree/4.jpg",
       author: "Naim Islam",
     },
     {
       id: "5",
       title: "Ahaliya's Deen square",
-      image: "/api/placeholder/200/300",
+      image: "/tree/5.jpg",
       author: "Ahaliya's Deen",
       isLive: true,
     },
     {
       id: "6",
       title: "Habibur Rahman Habib",
-      image: "/api/placeholder/200/300",
+      image: "/tree/6.jpg",
       author: "Habibur Rahman",
     },
     {
       id: "7",
       title: "Another Story",
-      image: "/api/placeholder/200/300",
+      image: "/tree/7.jpg",
       author: "User Name",
     },
     {
       id: "8",
       title: "More Content",
-      image: "/api/placeholder/200/300",
+      image: "/tree/1.jpg",
       author: "Content Creator",
     },
     {
       id: "9",
       title: "Create story",
-      image: "/api/placeholder/200/300",
+      image: "/tree/2.jpg",
       isCreateStory: true,
     },
     {
       id: "10",
       title: "RealityCheck BD",
-      image: "/api/placeholder/200/300",
+      image: "/tree/3.jpg",
       author: "RealityCheck BD",
     },
     {
       id: "11",
       title: "মেসবাম র্যাসেল উদ্দিন",
-      image: "/api/placeholder/200/300",
+      image: "/tree/4.jpg",
       author: "Rassel Uddin",
     },
     {
       id: "12",
       title: "Naim Islam",
-      image: "/api/placeholder/200/300",
+      image: "/tree/5.jpg",
       author: "Naim Islam",
     },
     {
       id: "13",
       title: "Ahaliya's Deen square",
-      image: "/api/placeholder/200/300",
+      image: "/tree/6.jpg",
       author: "Ahaliya's Deen",
       isLive: true,
     },
     {
       id: "14",
       title: "Habibur Rahman Habib",
-      image: "/api/placeholder/200/300",
+      image: "/tree/7.jpg",
       author: "Habibur Rahman",
     },
     {
       id: "15",
       title: "Another Story",
-      image: "/api/placeholder/200/300",
+      image: "/tree/1.jpg",
       author: "User Name",
     },
     {
       id: "16",
       title: "More Content",
-      image: "/api/placeholder/200/300",
+      image: "/tree/2.jpg",
       author: "Content Creator",
     },
   ];
@@ -166,16 +157,30 @@ export default function HomePage() {
                 id: 1,
                 title: "রাসূল সাল্লাল্লাহু আলাইহি ওয়া সাল্লামের স্ত্রীগণ",
                 excerpt:
-                  "নবী সাল্লাল্লাহু আলাইহি ওয়াসাল্লামের স্ত্রীদের সংখ্যা কত? তাদের নাম কী কী? স্পষ্ট দলীলসহ জবাব চাই, যেখানে হাদীসের নম্বর, বইয়ের নাম ও পৃষ্ঠার নম্বর উল্লেখ থাকবে; যেহেতু বিষয়টি নিয়ে অনেক বিভ্রান্তি আছে। নবী সাল্লাল্লাহু আলাইহি ওয়াসাল্লামের স্ত্রীদের সংখ্যা কত? তাদের নাম কী কী? স্পষ্ট দলীলসহ জবাব চাই, যেখানে হাদীসের নম্বর, বইয়ের নাম ও পৃষ্ঠার নম্বর উল্লেখ থাকবে; যেহেতু বিষয়টি নিয়ে অনেক বিভ্রান্তি আছে।",
+                  `
+এই ইট-পাথরের শহরে বসত করে চাইলেও মনের মতো ফলের বাগান করা সম্ভব হয় না। কিন্তু সামান্য কিছু অর্থের মাধ্যমে গ্রামে বসবাসরত দরিদ্র কোনো বৃক্ষপ্রেমীকে আপনি একটি ফলের বাগান উপহার দিতে পারেন।
+
+এতে একদিকে আপনি যেমন আত্মপ্রশান্তি ও সদকায়ে জারিয়ার সওয়াব লাভ করবেন, পাশাপাশি অভাবী জনগোষ্ঠীর স্বনির্ভরকরণ ও পরিবেশ সুরক্ষায়ও গুরুত্বপূর্ণ অবদান থাকবে আপনার।
+
+তাই, এই বর্ষায় আপনি হতে পারেন এক বা একাধিক ফলের বাগানের উপহারদাতা। আপনার বাগানে থাকবে আম, লিচু, লেবু, পেয়ারা, আমড়া-সহ হরেক রকম ফলের গাছ।
+🔸 ২০ টি ফলদ গাছের একটি বাগান ২ হাজার টাকা।
+🔸 ৫০ টি ফলদ গাছের একটি বাগান ৫ হাজার টাকা।
+🔸 ১০০ টি ফলদ গাছের একটি বাগান ১০ হাজার টাকা।
+🔸 ১ টি ফলদ গাছ ১০০ টাকা।
+
+চাইলে যে কোনো পরিমাণ অর্থও ডোনেশন করতে পারবেন।
+বাগান ছাড়াও বিভিন্ন মসজিদ ও শিক্ষা প্রতিষ্ঠানের আঙিনায় বৃক্ষরোপণ করা হবে।`,
                 categories: ["Fiqh", "Business", "Finance", "Technology"],
                 author: "Ahmad Rahman",
                 images: [
-                  "/placeholder.svg",
-                  "/placeholder.svg",
-                  "/placeholder.svg",
-                  "/placeholder.svg",
-                  "/placeholder.svg",
-                  "/placeholder.svg",
+                  "/tree/1.jpg",
+                  "/tree/2.jpg",
+                  "/tree/tree.mp4",
+                  "/tree/3.jpg",
+                  "/tree/4.jpg",
+                  "/tree/5.jpg",
+                  "/tree/6.jpg",
+                  "/tree/7.jpg"
                 ],
                 authorAvatar: "/scholar.jpg",
                 scholar: "Dr. Yusuf Al-Qaradawi",

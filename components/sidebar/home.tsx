@@ -1,23 +1,9 @@
-import { RiQuestionnaireFill } from "react-icons/ri";
-import { MdFavoriteBorder } from "react-icons/md";
 import { FaRegStickyNote } from "react-icons/fa";
-import {
-  Search,
-  Bell,
-  User,
-  Settings,
-  LogOut,
-  BookOpen,
-  MessageSquare,
-  PenTool,
-  Menu,
-  Shield,
-} from "lucide-react";
 import { GoHome } from "react-icons/go";
-import { MdOutlineQuestionAnswer } from "react-icons/md";
-import { PiBooks } from "react-icons/pi";
-import { RiArticleLine } from "react-icons/ri";
 import { IoBookOutline } from "react-icons/io5";
+import { MdFavoriteBorder, MdOutlineQuestionAnswer } from "react-icons/md";
+import { PiBooks } from "react-icons/pi";
+import { RiArticleLine, RiQuestionnaireFill } from "react-icons/ri";
 
 const items = [
   {
@@ -44,7 +30,7 @@ const navigationItems = [
 
 export default function HomeSidebar() {
     return (
-      <div className="flex flex-col items-start justify-center w-full">
+      <div className="flex flex-col items-start justify-center w-full text-black/70">
         {navigationItems.map((item, index) => (
           <div key={index} className="font-bold flex items-center w-full space-x-3 hover:cursor-pointer hover:bg-slate-200 py-2.5 px-4 rounded-md">
             <item.icon className="w-8 h-8" />
