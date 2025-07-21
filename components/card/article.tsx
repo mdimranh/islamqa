@@ -12,6 +12,7 @@ import { BiSolidMessageSquareCheck } from "react-icons/bi";
 import { FaRegBookmark } from "react-icons/fa";
 import { MdOutlineShare } from "react-icons/md";
 import ExpandableText from "../expandableText";
+import { MediaGallery } from "./gallery";
 
 export function ArticleCard({article}: {article: any}) {
   return (
@@ -70,7 +71,8 @@ export function ArticleCard({article}: {article: any}) {
 
           <CardContent className="px-4 pt-0">
             {/* <Gallery images={article.images} /> */}
-            <PhotoGallery images={article.images} />
+            {/* <PhotoGallery images={article.images} className={""} /> */}
+            <MediaGallery media={article.images} className={""} />
             <div className="mt-0">
               <ExpandableText
                 text={article.excerpt}

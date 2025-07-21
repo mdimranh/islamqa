@@ -4,7 +4,6 @@ import { ArticleCard } from "@/components/card/article"
 import { FeaturedQuestions } from "@/components/featured-questions"
 import { Header } from "@/components/header"
 import { IslamicCalendar } from "@/components/islamic-calendar"
-import { PrayerTimes } from "@/components/prayer-times"
 import ScholarsSide from "@/components/scholars/side"
 import HomeSidebar from "@/components/sidebar/home"
 import ReelsSlider from "@/components/slider"
@@ -178,6 +177,7 @@ export default function HomePage() {
                   "/tree/tree.mp4",
                   "/tree/3.jpg",
                   "/tree/4.jpg",
+                  "/tree/yeasir.mp4",
                   "/tree/5.jpg",
                   "/tree/6.jpg",
                   "/tree/7.jpg"
@@ -192,13 +192,13 @@ export default function HomePage() {
         </div>
 
         <div className="max-w-80 w-full max-h-[calc(100vh-65px)] py-4 mr-4 flex flex-col gap-4 overflow-y-auto scrollbar-hide sticky top-[65px]">
-          <Suspense
+          {/* <Suspense
             fallback={
               <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
             }
           >
             <PrayerTimes />
-          </Suspense>
+          </Suspense> */}
           {/* <Suspense
             fallback={
               <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>

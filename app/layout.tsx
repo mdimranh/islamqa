@@ -1,6 +1,7 @@
-import type React from "react"
+import { Header } from "@/components/header"
 import type { Metadata } from "next"
-import { Inter, Amiri } from "next/font/google"
+import { Amiri, Inter } from "next/font/google"
+import type React from "react"
 import "./globals.css"
 
 const inter = Inter({
@@ -30,7 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${amiri.variable}`}>
       <body className="bg-slate-100">
-        <div>{children}</div>
+        <Header />
+        <div className="mt-12">{children}</div>
       </body>
     </html>
   );

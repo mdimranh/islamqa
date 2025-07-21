@@ -1,10 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,28 +9,26 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Search, Bell, User, Settings, LogOut, BookOpen, MessageSquare, PenTool, Menu, Shield } from "lucide-react"
-import { GoHome } from "react-icons/go";
-import { MdOutlineQuestionAnswer } from "react-icons/md";
-import { PiBooks } from "react-icons/pi";
-import { RiArticleLine } from "react-icons/ri";
-import { IoBookOutline } from "react-icons/io5";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Input } from "@/components/ui/input"
+import { useCurrentUser } from "@/hooks/user"
+import { LogOut, LucideMessageCircleQuestion, Search, Settings, Shield, User } from "lucide-react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { GoHome } from "react-icons/go"
+import { IoBookOutline } from "react-icons/io5"
+import { MdOutlineQuestionAnswer } from "react-icons/md"
+import { PiBooks } from "react-icons/pi"
+import { RiArticleLine } from "react-icons/ri"
 import { DropdownMenuDemo } from "./notification/menu"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Mock user data - in real app, this would come from auth context
-  const user = {
-    name: "Ahmad Rahman",
-    email: "ahmad@example.com",
-    role: "user", // user, scholar, admin
-    avatar: "/placeholder-user.jpg",
-    isVerified: false,
-  }
+  const user = useCurrentUser() as any
+  
+  const router = useRouter()
 
   const navigationItems = [
     { href: "/", label: "Home", icon: GoHome },
@@ -44,14 +39,12 @@ export function Header() {
   ];
 
   const getDashboardLink = () => {
-    switch (user.role) {
-      case "admin":
-        return "/admin/dashboard"
-      case "scholar":
-        return "/scholar/dashboard"
-      default:
-        return "/dashboard"
+    if (user?.is_superuser) {
+      return "/admin/dashboard"
+    } else if (user?.is_scholar) {
+      return "/scholar/dashboard"
     }
+    return "/dashboard"
   }
 
   return (
@@ -84,8 +77,8 @@ export function Header() {
           </nav> */}
 
           {/* Search Bar */}
-          <div className="hidden lg:flex items-center space-x-4 flex-1 max-w-md mx-8">
-            <div className="relative w-full">
+          <div className="hidden lg:flex items-center space-x-4 mx-8">
+            <div className="relative max-w-[500px] w-[500px]">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
                 type="search"
@@ -95,6 +88,10 @@ export function Header() {
                 className="pl-10 bg-gray-50 border-gray-200 focus:bg-white"
               />
             </div>
+            <Button variant={"outline"} onClick={() => router.push("/ask")}>
+              <LucideMessageCircleQuestion  />
+              Ask
+            </Button>
           </div>
 
           {/* User Actions */}
@@ -116,14 +113,14 @@ export function Header() {
                 >
                   <Avatar className="h-8 w-8">
                     <AvatarImage
-                      src={user.avatar || "/placeholder.svg"}
-                      alt={user.name}
+                      src={user?.avatar || "/placeholder.svg"}
+                      alt={user?.first_name || "User Avatar"}
                     />
                     <AvatarFallback className="bg-emerald-100 text-emerald-700">
-                      {user.name
+                      {`${user?.first_name} ${user?.last_name}` || "User"}
                         .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
+                        .map((n) ={">"} n[0])
+                        .join(""){"}"}
                     </AvatarFallback>
                   </Avatar>
                 </Button>
@@ -131,9 +128,9 @@ export function Header() {
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <div className="flex items-center justify-start gap-2 p-2">
                   <div className="flex flex-col space-y-1 leading-none">
-                    <p className="font-medium">{user.name}</p>
+                    <p className="font-medium">{user?.first_name} {user?.last_name}</p>
                     <p className="w-[200px] truncate text-sm text-muted-foreground">
-                      {user.email}
+                      {user?.email}
                     </p>
                   </div>
                 </div>
@@ -144,7 +141,7 @@ export function Header() {
                     <span>Dashboard</span>
                   </Link>
                 </DropdownMenuItem>
-                {user.role === "admin" && (
+                {user?.is_superuser && (
                   <DropdownMenuItem asChild>
                     <Link href="/admin">
                       <Shield className="mr-2 h-4 w-4" />

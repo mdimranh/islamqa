@@ -1,13 +1,11 @@
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { MessageSquare, ThumbsUp, Clock, CheckCircle, LucidePrinter } from "lucide-react"
-import { RiQuestionnaireFill } from "react-icons/ri"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { LucidePrinter } from "lucide-react"
+import { BiSolidMessageSquareCheck } from "react-icons/bi"
 import { FaQuestion, FaRegBookmark } from "react-icons/fa"
-import { MdOutlineShare, MdQuestionAnswer } from "react-icons/md"
-import { PiSealQuestionFill } from "react-icons/pi"
-import { BiSolidMessageSquareCheck } from "react-icons/bi";
+import { MdOutlineShare } from "react-icons/md"
+import { RiQuestionnaireFill } from "react-icons/ri"
 
 const featuredQuestions = [
   {
@@ -206,10 +204,19 @@ export function FeaturedQuestions() {
                   </div>
                 </CardContent>
               </div>
-              <div className="flex justify-between gap-5 px-4 py-4 border-t z-10">
-                <FaRegBookmark className="w-5 h-5 text-slate-500 cursor-pointer" />
-                <MdOutlineShare className="w-5 h-5 text-slate-500 cursor-pointer" />
-                <LucidePrinter className="w-5 h-5 text-slate-500 cursor-pointer" />
+              <div className="flex justify-around p-1 border-t z-10 font-semibold text-slate-500">
+                <span className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 rounded-lg px-2 py-1 w-full justify-center">
+                  <FaRegBookmark className="w-4 h-4 text-slate-500 cursor-pointer" />
+                  Bookmark
+                </span>
+                <span className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 rounded-lg px-2 py-1 w-full justify-center">
+                  <MdOutlineShare className="w-4 h-4 text-slate-500 cursor-pointer" />
+                  Share
+                </span>
+                <span className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 rounded-lg px-2 py-1 w-full justify-center">
+                  <LucidePrinter className="w-4 h-4 text-slate-500 cursor-pointer" />
+                  Print
+                </span>
               </div>
             </div>
           </Card>
